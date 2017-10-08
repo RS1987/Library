@@ -1,0 +1,7 @@
+﻿@using Library.Entities
+@model IEnumerable<Author>
+
+@foreach (var author in Model)
+{
+    <h3>@author.FirstName @author.LastName</h3><br />
+}

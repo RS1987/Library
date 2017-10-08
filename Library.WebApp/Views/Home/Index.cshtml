@@ -1,0 +1,39 @@
+﻿@using Library.Entities
+@model IEnumerable<Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h1>Index</h1>
+
+<form action="~/Home/Index" method="get">
+    <input type="text" name="login" />
+    <input type="password" name="pwd"/>
+    <input type="submit" />
+</form>
+<br/>
+<form action="~/Home/Index" method="post">
+    @Html.TextBox("Name")
+    <br />
+        <input type="text" name="Category" id="Category" /><br />
+        <input type="text" name="Theme" id="Theme"/><br />
+        <input type="text" name="Quantity" id="Quantity" /><br />
+        <input type="submit" />
+</form>
+
+@foreach (var book in Model)
+{
+    <div>
+    <h2>@book.Name</h2>
+       <div>
+           @{
+               Html.RenderPartial("Authors", book.Authors); 
+           }
+       </div>
+    </div>
+}
+
+
+
